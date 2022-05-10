@@ -13,25 +13,27 @@ jobs:
         with:
           command: pwd
       - run: |
-          echo '### outputs' >> $GITHUB_STEP_SUMMARY
-          echo '' >> $GITHUB_STEP_SUMMARY
-          echo '`exitCode`:' >> $GITHUB_STEP_SUMMARY
-          echo '' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "${CRA_EXIT_CODE}" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo '' >> $GITHUB_STEP_SUMMARY
-          echo '`stdout`:' >> $GITHUB_STEP_SUMMARY
-          echo '' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "${CRA_STDOUT}" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo '' >> $GITHUB_STEP_SUMMARY
-          echo '`stderr`:' >> $GITHUB_STEP_SUMMARY
-          echo '' >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
-          echo "${CRA_STDERR}" >> $GITHUB_STEP_SUMMARY
-          echo '```' >> $GITHUB_STEP_SUMMARY
+          {
+            echo '### outputs'
+            echo ''
+            echo '`exitCode`:'
+            echo ''
+            echo '```'
+            echo "${CRA_EXIT_CODE}"
+            echo '```'
+            echo ''
+            echo '`stdout`:'
+            echo ''
+            echo '```'
+            echo "${CRA_STDOUT}"
+            echo '```'
+            echo ''
+            echo '`stderr`:'
+            echo ''
+            echo '```'
+            echo "${CRA_STDERR}"
+            echo '```'
+          } >> $GITHUB_STEP_SUMMARY
         env:
           CRA_EXIT_CODE: ${{ steps.cra.outputs.exitCode }}
           CRA_STDOUT: ${{ steps.cra.outputs.stdout }}
