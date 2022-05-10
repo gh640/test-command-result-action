@@ -1,0 +1,38 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gh640/command-result-action@main
+        id: cra
+        with:
+          command: pwd
+      - run: |
+          echo '### outputs' >> $GITHUB_STEP_SUMMARY
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '`exitCode`:'
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '```'
+          echo "${CRA_EXIT_CODE}" >> $GITHUB_STEP_SUMMARY
+          echo '```'
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '`stdout`:'
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '```'
+          echo "${CRA_STDOUT}" >> $GITHUB_STEP_SUMMARY
+          echo '```'
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '`stderr`:'
+          echo '' >> $GITHUB_STEP_SUMMARY
+          echo '```'
+          echo "${CRA_STDERR}" >> $GITHUB_STEP_SUMMARY
+          echo '```'
+        env:
+          CRA_EXIT_CODE: ${{ steps.cra.outputs.exitCode }}
+          CRA_STDOUT: ${{ steps.cra.outputs.stdout }}
+          CRA_STDERR: ${{ steps.cra.outputs.stderr }}
