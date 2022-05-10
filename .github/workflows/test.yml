@@ -15,23 +15,23 @@ jobs:
       - run: |
           echo '### outputs' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
-          echo '`exitCode`:'
+          echo '`exitCode`:' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
-          echo '```'
+          echo '```' >> $GITHUB_STEP_SUMMARY
           echo "${CRA_EXIT_CODE}" >> $GITHUB_STEP_SUMMARY
-          echo '```'
+          echo '```' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
-          echo '`stdout`:'
+          echo '`stdout`:' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
-          echo '```'
+          echo '```' >> $GITHUB_STEP_SUMMARY
           echo "${CRA_STDOUT}" >> $GITHUB_STEP_SUMMARY
-          echo '```'
+          echo '```' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
-          echo '`stderr`:'
+          echo '`stderr`:' >> $GITHUB_STEP_SUMMARY
           echo '' >> $GITHUB_STEP_SUMMARY
-          echo '```'
+          echo '```' >> $GITHUB_STEP_SUMMARY
           echo "${CRA_STDERR}" >> $GITHUB_STEP_SUMMARY
-          echo '```'
+          echo '```' >> $GITHUB_STEP_SUMMARY
         env:
           CRA_EXIT_CODE: ${{ steps.cra.outputs.exitCode }}
           CRA_STDOUT: ${{ steps.cra.outputs.stdout }}
