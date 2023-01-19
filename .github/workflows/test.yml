@@ -2,13 +2,18 @@ name: Test
 
 on:
   workflow_dispatch:
+    inputs:
+      target:
+        description: 'Target'
+        required: true
+        type: string
 
 jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: gh640/command-result-action@v1
+      - uses: "gh640/command-result-action@${{ inputs.target }}"
         id: cra
         with:
           command: pwd
