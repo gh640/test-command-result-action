@@ -13,7 +13,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: "gh640/command-result-action@${{ inputs.target }}"
+      - uses: "gh640/command-result-action@${{ github.event.inputs.target }}"
         id: cra
         with:
           command: pwd
