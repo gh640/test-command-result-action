@@ -8,7 +8,7 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: gh640/command-result-action@v1
+      - uses: gh640/command-result-action@main
         id: cra
         with:
           command: pwd
